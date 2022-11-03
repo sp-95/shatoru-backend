@@ -1,24 +1,36 @@
-from functools import lru_cache
+from functools import cache
+from pathlib import Path
 from typing import List
 
+from loguru._defaults import LOGURU_FORMAT
 from pydantic import AnyHttpUrl, BaseSettings
+
+_BASE_PATH = Path(__file__).parent.parent.parent.parent
 
 
 class Settings(BaseSettings):
-    API_STR: str = "/api"
+    PROJECT_NAME: str = "shatoru-backend"
+
+    DEBUG: bool = False
+
+    CONFIG_PATH: str | Path = _BASE_PATH / "configs"
+    LOG_PATH: str | Path = _BASE_PATH / "logs"
+
+    LOG_FORMAT: str = LOGURU_FORMAT
+
+    API_PREFIX: str = "/api"
 
     # BACKEND_CORS_ORIGINS is a JSON-formatted list of origins
     # e.g: '["http://localhost", "http://localhost:4200", "http://localhost:3000"]'
     BACKEND_CORS_ORIGINS: List[AnyHttpUrl] = []
 
-    PROJECT_NAME: str = "shatoru-backend"
-
     class Config:
+        env_prefix = "SHATORU_"
         env_file = ".env.local", ".env", ".env.dev", ".env.stage", ".env.prod"
         case_sensitive = True
 
 
-@lru_cache()
+@cache
 def get_settings():
     return Settings()
 
