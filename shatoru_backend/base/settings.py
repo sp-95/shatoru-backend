@@ -40,6 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Local Apps
+    "shatoru_backend.apps.core",
+    "shatoru_backend.apps.routing",
 ]
 
 MIDDLEWARE = [
