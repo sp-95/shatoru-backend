@@ -50,7 +50,8 @@ colors: ## show all the colors
 help:
 	@echo ""
 	@echo "    ${BLACK}:: ${RED}Shatoru-backend Make Commands${RESET} ${BLACK}::${RESET}"
-	@echo "${BLACK}-----------------------------------------------------------------${RESET}"
+	@printf -- "${BLACK}-%.0s${RESET}" {1..88}
+	@printf "\n"
 	@grep -E '^[a-zA-Z_0-9%-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "${TARGET_COLOR}%-30s${RESET} %s\n", $$1, $$2}'
 
 
