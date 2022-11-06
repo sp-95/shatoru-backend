@@ -23,7 +23,7 @@ urlpatterns = [
 ]
 
 api_urlpatterns = [
-    path("stop/", include("apps.routing.api.urls")),
+    path("stop/", include("shatoru_backend.apps.routing.api.urls")),
 ]
 
 # API v1 URL endpoints
