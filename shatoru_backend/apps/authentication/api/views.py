@@ -1,11 +1,12 @@
 from django.contrib.auth.models import User
 from rest_framework.generics import CreateAPIView, DestroyAPIView, RetrieveUpdateAPIView
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
+from rest_framework.permissions import IsAdminUser
 
 from shatoru_backend.apps.authentication.api.serializer import (
     DriverSerializer,
     RegisterSerializer,
 )
+from shatoru_backend.apps.core.permissions import IsDriverOwner
 
 
 class RegisterDriverAPIView(CreateAPIView):
@@ -15,7 +16,7 @@ class RegisterDriverAPIView(CreateAPIView):
 
 class DriverAPIView(RetrieveUpdateAPIView):
     lookup_field = "id"
-    permission_classes = (IsAdminUser, IsAuthenticated)
+    permission_classes = (IsAdminUser | IsDriverOwner,)
     serializer_class = DriverSerializer
 
     def get_queryset(self):
