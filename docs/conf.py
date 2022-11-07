@@ -34,7 +34,7 @@ except ImportError:
     from sphinx import apidoc
 
 output_dir = os.path.join(__location__, "api")
-module_dir = os.path.join(__location__, "../src/shatoru_backend")
+module_dir = os.path.join(__location__, "../shatoru_backend")
 try:
     shutil.rmtree(output_dir)
 except FileNotFoundError:
