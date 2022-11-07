@@ -6,6 +6,13 @@ from rest_framework.serializers import EmailField, ModelSerializer
 from rest_framework.validators import UniqueValidator
 
 
+class DriverSerializer(ModelSerializer):
+    class Meta:
+        model = User
+        fields = ("id", "username", "email", "first_name", "last_name")
+        read_only_fields = ["id", "username"]
+
+
 class RegisterSerializer(ModelSerializer):
     email = EmailField(
         required=True, validators=[UniqueValidator(queryset=User.objects.all())]
