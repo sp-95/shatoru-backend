@@ -1,20 +1,21 @@
 import secrets
 
 from django.contrib.auth.models import Group, User
+from django.contrib.auth.password_validation import validate_password
 from django.core.mail import send_mail
-from rest_framework.serializers import EmailField, ModelSerializer
+from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
 
-class DriverSerializer(ModelSerializer):
+class DriverSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("id", "username", "email", "first_name", "last_name")
         read_only_fields = ["id", "username"]
 
 
-class RegisterSerializer(ModelSerializer):
-    email = EmailField(
+class RegisterSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(
         required=True, validators=[UniqueValidator(queryset=User.objects.all())]
     )
 
@@ -55,3 +56,37 @@ class RegisterSerializer(ModelSerializer):
         )
 
         return user
+
+
+class PasswordChangeSerializer(serializers.ModelSerializer):
+    old_password = serializers.CharField(write_only=True, required=True)
+    password = serializers.CharField(
+        write_only=True, required=True, validators=[validate_password]
+    )
+    password2 = serializers.CharField(write_only=True, required=True)
+
+    class Meta:
+        model = User
+        fields = ("old_password", "password", "password2")
+
+    def validate(self, attrs):
+        if attrs["password"] != attrs["password2"]:
+            raise serializers.ValidationError(
+                {"password": "Password fields don't match"}
+            )
+
+        return attrs
+
+    def validate_old_password(self, value):
+        user = self.context["request"].user
+        if not user.check_password(value):
+            raise serializers.ValidationError(
+                {"old_password": "Old password is not correct"}
+            )
+        return value
+
+    def update(self, instance, validated_data):
+        instance.set_password(validated_data["password"])
+        instance.save()
+
+        return instance
