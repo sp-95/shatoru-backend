@@ -15,6 +15,12 @@ class RegisterDriverAPIView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
 
 
+class DriverListAPIView(generics.ListAPIView):
+    queryset = User.objects.filter(is_superuser=False, is_active=True)
+    permission_classes = (IsAdminUser,)
+    serializer_class = DriverSerializer
+
+
 class DriverAPIView(generics.RetrieveUpdateAPIView):
     lookup_field = "id"
     permission_classes = (IsAdminUser | IsDriverOwner,)
