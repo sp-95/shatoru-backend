@@ -1,5 +1,6 @@
 import secrets
 
+from django.conf import settings
 from django.contrib.auth.models import Group, User
 from django.contrib.auth.password_validation import validate_password
 from django.core.mail import send_mail
@@ -43,15 +44,22 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         # TODO: Move this to a different thread
-        send_mail(
-            "Account created for the Shatoru App",
+        # TODO: Use an email template
+        email_plaintext_message = (
             "Your Shatoru account has been successfully created by the Admin.\n\n"
             "Your login credentials are as stated below:\n"
             f"Username: {user.username}\n"
             f"Password: {password}\n"
-            "\nPlease reset your password on your first login.\n",
-            "shatoru.umd@gmail.com",
-            [user.email],
+            "\nPlease reset your password on your first login.\n"
+            "\nBest Regards,\n"
+            "Shatoru Admin\n"
+        )
+
+        send_mail(
+            subject="Account created for the Shatoru App",
+            message=email_plaintext_message,
+            from_email=settings.EMAIL_HOST_USER,
+            recipient_list=[user.email],
             fail_silently=False,
         )
 
