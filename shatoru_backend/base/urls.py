@@ -23,7 +23,8 @@ urlpatterns = [
 ]
 
 api_urlpatterns = [
-    path("user/", include("shatoru_backend.apps.authentication.api.urls")),
+    path("auth/", include("shatoru_backend.apps.authentication.api.urls")),
+    path("user/", include("shatoru_backend.apps.user.api.urls")),
     path("stop/", include("shatoru_backend.apps.routing.api.urls")),
 ]
 

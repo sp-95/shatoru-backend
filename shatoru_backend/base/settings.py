@@ -28,7 +28,7 @@ SECRET_KEY = config("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", cast=bool)
 
-ALLOWED_HOSTS: List[str] = []
+ALLOWED_HOSTS: List[str] = ["*"]
 
 
 # Application definition
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "shatoru_backend.apps.authentication",
     "shatoru_backend.apps.core",
     "shatoru_backend.apps.routing",
+    "shatoru_backend.apps.user",
 ]
 
 MIDDLEWARE = [
