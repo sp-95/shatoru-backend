@@ -39,7 +39,7 @@ POUND = \#
 
 .DEFAULT_GOAL := help
 
-colors: ## Show all the colors
+colors:  ## Show all the colors
 	@echo "${BLACK}BLACK${RESET}"
 	@echo "${RED}RED${RESET}"
 	@echo "${GREEN}GREEN${RESET}"
@@ -58,15 +58,19 @@ help:
 
 
 # Main Commands
-.PHONY: info build run deploy doc
+.PHONY: init run migrations migrate
 
-run: ## Run the Django Server
+init: migrations migrate  ## Initialize the database
+	python -m shatoru_backend.manage create_groups
+	python -m shatoru_backend.manage create_default_admin
+
+run:  ## Run the Django Server
 	python -m shatoru_backend.manage runserver
 
-migrations: ## Create migration files
+migrations:  ## Create migration files
 	python -m shatoru_backend.manage makemigrations
 
-migrate: ## Apply migrations
+migrate:  ## Apply migrations
 	python -m shatoru_backend.manage migrate
 
 

@@ -3,7 +3,11 @@ shatoru-backend
 ===============
 
 
-    Add a short description here!
+    A mobile application to keep up-to-date with the Shuttle
 
 
-A longer description of your project goes here...
+Getting Started
+---------------
+
+.. code-block: bash
+    make init
