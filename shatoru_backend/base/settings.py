@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django_rest_passwordreset",
     "rest_framework",
     "rest_framework.authtoken",
+    "drf_yasg",
     # Local Apps
     "shatoru_backend.apps.authentication",
     "shatoru_backend.apps.core",
