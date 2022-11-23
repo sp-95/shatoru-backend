@@ -39,7 +39,7 @@ POUND = \#
 
 .DEFAULT_GOAL := help
 
-colors:  ## Show all the colors
+colors:  ## Show available colors
 	@echo "${BLACK}BLACK${RESET}"
 	@echo "${RED}RED${RESET}"
 	@echo "${GREEN}GREEN${RESET}"
@@ -49,29 +49,40 @@ colors:  ## Show all the colors
 	@echo "${BLUE}BLUE${RESET}"
 	@echo "${WHITE}WHITE${RESET}"
 
-help:
+help:  ## List available commands
 	@echo ""
 	@echo "    ${BLACK}:: ${RED}Shatoru-backend Make Commands${RESET} ${BLACK}::${RESET}"
 	@printf -- "${BLACK}-%.0s${RESET}" {1..88}
 	@printf "\n"
-	@grep -E '^[a-zA-Z_0-9%-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "${TARGET_COLOR}%-30s${RESET} %s\n", $$1, $$2}'
+	@grep -E '^[a-zA-Z_0-9%-]+:.*?## .*$$' $(firstword $(MAKEFILE_LIST)) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "${TARGET_COLOR}%-30s${RESET} %s\n", $$1, $$2}'
 
 
 # Main Commands
-.PHONY: init run migrations migrate
+PROJECT_SRC = shatoru_backend
 
-init: migrations migrate  ## Initialize the database
-	python -m shatoru_backend.manage create_groups
-	python -m shatoru_backend.manage create_default_admin
+.PHONY: init install install-dev server migrations apply-migrations app
 
-run:  ## Run the Django Server
-	python -m shatoru_backend.manage runserver
+init: migrations apply-migrations install-dev  ## Initialize the database
+	python -m $(PROJECT_SRC).manage create_default_admin
+
+install:  ## Install dependencies
+	pip install -e .
+
+install-dev:  ## Install dev dependencies
+	pip install -e ".[dev]"
+
+server:  ## Run the Django Server
+	python -m $(PROJECT_SRC).manage runserver
 
 migrations:  ## Create migration files
-	python -m shatoru_backend.manage makemigrations
+	python -m $(PROJECT_SRC).manage makemigrations
 
-migrate:  ## Apply migrations
-	python -m shatoru_backend.manage migrate
+apply-migrations:  ## Apply migrations
+	python -m $(PROJECT_SRC).manage migrate
+
+app: ## Create a django app
+	mkdir -p $(PROJECT_SRC)/apps/$(name)
+	python -m $(PROJECT_SRC).manage startapp $(name) $(PROJECT_SRC)/apps/$(name)
 
 
 # vim:noexpandtab:ts=8:sw=8:ai
