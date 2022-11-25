@@ -62,7 +62,7 @@ PROJECT_SRC = shatoru_backend
 
 .PHONY: init install install-dev server migrations apply-migrations app
 
-init: migrations apply-migrations install-dev  ## Initialize the database
+init: install-dev migrate  ## Initialize the database
 	python -m $(PROJECT_SRC).manage create_default_admin
 
 install:  ## Install dependencies
@@ -71,18 +71,20 @@ install:  ## Install dependencies
 install-dev:  ## Install dev dependencies
 	pip install -e ".[dev]"
 
-server:  ## Run the Django Server
-	python -m $(PROJECT_SRC).manage runserver
-
 migrations:  ## Create migration files
 	python -m $(PROJECT_SRC).manage makemigrations
 
 apply-migrations:  ## Apply migrations
 	python -m $(PROJECT_SRC).manage migrate
 
+migrate: migrations apply-migrations ## Create migrations and apply them
+
 app: ## Create a django app
 	mkdir -p $(PROJECT_SRC)/apps/$(name)
 	python -m $(PROJECT_SRC).manage startapp $(name) $(PROJECT_SRC)/apps/$(name)
+
+server: migrate  ## Run the Django Server
+	python -m $(PROJECT_SRC).manage runserver
 
 
 # vim:noexpandtab:ts=8:sw=8:ai
