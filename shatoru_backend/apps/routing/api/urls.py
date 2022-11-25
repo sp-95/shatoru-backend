@@ -1,10 +1,16 @@
 from typing import List
 
-from django.urls import URLPattern, URLResolver, path
+from django.urls import URLPattern, URLResolver
+from rest_framework.routers import DefaultRouter
 
-from shatoru_backend.apps.routing.api.views import StopCreateAPI, StopListAPI
+from shatoru_backend.apps.routing.api.views import StopViewSet
+
+router = DefaultRouter()
+router.register("", StopViewSet)
+
 
 urlpatterns: List[URLPattern | URLResolver] = [
-    path("list/", StopListAPI.as_view(), name="list_stop"),
-    path("create/", StopCreateAPI.as_view(), name="create_stop"),
+    # Other APIs here
 ]
+
+urlpatterns += router.urls

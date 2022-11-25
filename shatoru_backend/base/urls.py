@@ -59,7 +59,7 @@ api_urlpatterns = [
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("auth/", include("shatoru_backend.apps.authentication.api.urls")),
     path("user/", include("shatoru_backend.apps.user.api.urls")),
-    path("stop/", include("shatoru_backend.apps.routing.api.urls")),
+    path("stops/", include("shatoru_backend.apps.routing.api.urls")),
 ]
 
 # API v1 URL endpoints
