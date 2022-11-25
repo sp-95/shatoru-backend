@@ -20,7 +20,7 @@ def password_reset_token_created(
     :return:
     """
     # TODO: Move this to a different thread
-    # send an e-mail to the user
+    # create context for the email template
     context = {
         "name": reset_password_token.user.first_name
         or reset_password_token.user.username,
@@ -32,6 +32,7 @@ def password_reset_token_created(
     email_html_message = render_to_string("email/user_reset_password.html", context)
     email_plaintext_message = render_to_string("email/user_reset_password.txt", context)
 
+    # send an e-mail to the user
     msg = EmailMultiAlternatives(
         subject=f"Password Reset for {context['customer_portal']}",
         body=email_plaintext_message,
