@@ -60,6 +60,7 @@ api_urlpatterns = [
     path("auth/", include("shatoru_backend.apps.authentication.api.urls")),
     path("user/", include("shatoru_backend.apps.user.api.urls")),
     path("stops/", include("shatoru_backend.apps.routing.api.urls")),
+    path("shuttles/", include("shatoru_backend.apps.shuttle_service.api.urls")),
 ]
 
 # API v1 URL endpoints
