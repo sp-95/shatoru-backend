@@ -31,11 +31,11 @@ current_api_version = "v1"
 
 schema_view = get_schema_view(
     openapi.Info(
-        title="Let It Go API",
+        title="Shatoru API",
         default_version=current_api_version,
-        description="API Endpoints for Let It Go Application",
+        description="API Endpoints for Shatoru Application",
         terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="letitgoumd@gmail.com"),
+        contact=openapi.Contact(email="shatoru.umd@gmail.com"),
         license=openapi.License(name="BSD License"),
     ),
     public=False,
