@@ -24,6 +24,6 @@ class ShuttleSchedule(AbstractBaseModel):
         SATURDAY = "Sa", _("Saturday")
 
     day = models.CharField(max_length=10)
-    start_time = models.TimeField()
-    end_time = models.TimeField()
+    start_time = models.CharField(max_length=255)
+    end_time = models.CharField(max_length=255)
     stops = models.JSONField()

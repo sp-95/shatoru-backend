@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "drf_yasg",
+    "import_export",
     # Local Apps
     "shatoru_backend.apps.authentication",
     "shatoru_backend.apps.core",
