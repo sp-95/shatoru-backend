@@ -12,6 +12,14 @@ class ShuttleSerializer(ModelSerializer):
         model = models.Shuttle
         fields = "__all__"
 
+    def to_representation(self, instance):
+        data = super().to_representation(instance)
+
+        schedules = models.ShuttleSchedule.objects.filter(shuttle=data["id"])
+        data["schedules"] = [schedule.id for schedule in schedules]
+
+        return data
+
 
 class ShuttleScheduleSerializer(ModelSerializer):
     shuttle = CharField(max_length=255)
