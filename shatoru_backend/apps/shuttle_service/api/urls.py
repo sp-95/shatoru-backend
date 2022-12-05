@@ -1,17 +1,21 @@
 from typing import List
 
-from django.urls import URLPattern, URLResolver
+from django.urls import URLPattern, URLResolver, path
 from rest_framework.routers import DefaultRouter
 
 from shatoru_backend.apps.shuttle_service.api import views
 
 router = DefaultRouter()
 router.register("", views.ShuttleViewSet)
-router.register("schedules", views.ShuttleScheduleViewSet)
 
+schedule_list = views.ShuttleScheduleViewSet.as_view({"get": "list", "post": "create"})
+schedule_detail = views.ShuttleScheduleViewSet.as_view(
+    {"get": "retrieve", "put": "update", "patch": "partial_update", "delete": "destroy"}
+)
 
 urlpatterns: List[URLPattern | URLResolver] = [
-    # Other APIs here
+    path("schedules/", schedule_list, name="schedule-list"),
+    path("schedules/<uuid:id>/", schedule_detail, name="schedule-detail"),
 ]
 
 urlpatterns += router.urls
