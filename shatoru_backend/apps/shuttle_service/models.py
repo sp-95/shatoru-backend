@@ -13,7 +13,9 @@ class Shuttle(AbstractBaseModel):
 
 
 class ShuttleSchedule(AbstractBaseModel):
-    shuttle = models.ForeignKey(Shuttle, on_delete=models.CASCADE)
+    shuttle = models.ForeignKey(
+        Shuttle, on_delete=models.CASCADE, related_name="schedules"
+    )
 
     # class Day(models.TextChoices):
     #     SUNDAY = "Su", _("Sunday")
