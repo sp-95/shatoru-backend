@@ -10,6 +10,9 @@ class Command(BaseCommand):
         with transaction.atomic():
             user, created = User.objects.get_or_create(username="admin")
             if created:
+                user.first_name = "Admin"
+                user.last_name = "User"
+                user.email = "shatoru.umd@gmail.com"
                 user.set_password("admin")
 
                 admin_group = Group.objects.get(name="Admin")
