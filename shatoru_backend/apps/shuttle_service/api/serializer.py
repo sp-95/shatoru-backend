@@ -31,7 +31,7 @@ class ShuttleScheduleSerializer(ModelSerializer):
             next_stop, interval = next(stop_pool)
             previous_time = current_time
             current_time += timedelta(minutes=int(interval))
-            if current_time <= end_time:
+            if current_time.time() <= end_time.time():
                 schedule.append(
                     {
                         "stop_name": next_stop.name,
