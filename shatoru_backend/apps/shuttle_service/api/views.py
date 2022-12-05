@@ -13,6 +13,7 @@ class ShuttleViewSet(ModelViewSet):
 
 
 class ShuttleScheduleViewSet(ModelViewSet):
+    lookup_field = "id"
     queryset = models.ShuttleSchedule.objects.all()
     serializer_class = serializer.ShuttleScheduleSerializer
     permission_classes = [IsAdminUser]
