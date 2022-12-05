@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta
 from itertools import cycle
 
-from rest_framework.permissions import IsAdminUser
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
@@ -21,7 +20,7 @@ class ShuttleScheduleViewSet(ModelViewSet):
     lookup_field = "id"
     queryset = models.ShuttleSchedule.objects.all()
     serializer_class = serializer.ShuttleScheduleSerializer
-    permission_classes = [IsAdminUser]
+    permission_classes = [IsAdminOrReadOnly]
 
     def perform_create(self, serializer):
         shuttle, _ = models.Shuttle.objects.get_or_create(
