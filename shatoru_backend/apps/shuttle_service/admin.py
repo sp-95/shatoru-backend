@@ -6,11 +6,24 @@ from shatoru_backend.apps.shuttle_service import models
 
 @admin.register(models.Shuttle)
 class ShuttleAdmin(ImportExportModelAdmin):
-    pass
+    list_display = (
+        "name",
+        "created_date",
+        "modified_date",
+    )
 
 
 @admin.register(models.ShuttleSchedule)
 class ShuttleScheduleAdmin(ImportExportModelAdmin):
-    list_display = ("shuttle", "days", "start_time", "end_time", "stops")
+    list_display = (
+        "id",
+        "shuttle",
+        "days",
+        "start_time",
+        "end_time",
+        "stops",
+        "created_date",
+        "modified_date",
+    )
     search_fields = ("stops", "days")
     list_filter = ("shuttle",)
