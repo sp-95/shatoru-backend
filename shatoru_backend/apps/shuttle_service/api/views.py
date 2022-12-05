@@ -16,3 +16,9 @@ class ShuttleScheduleViewSet(ModelViewSet):
     queryset = models.ShuttleSchedule.objects.all()
     serializer_class = serializer.ShuttleScheduleSerializer
     permission_classes = [IsAdminUser]
+
+    def perform_create(self, serializer):
+        shuttle, _ = models.Shuttle.objects.get_or_create(
+            name=self.request.data["shuttle"]
+        )
+        serializer.save(shuttle=shuttle)
