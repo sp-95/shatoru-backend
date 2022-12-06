@@ -11,3 +11,4 @@ Getting Started
 
 .. code-block: bash
     make init
+    make server
