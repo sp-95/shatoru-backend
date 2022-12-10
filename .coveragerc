@@ -6,7 +6,7 @@ source = shatoru_backend
 
 [paths]
 source =
-    src/
+    shatoru_backend/
     */site-packages/
 
 [report]

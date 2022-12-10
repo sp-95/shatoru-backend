@@ -5,6 +5,6 @@ Changelog
 Version 0.1
 ===========
 
-- Feature A added
-- FIX: nasty bug #1729 fixed
-- add your changes here!
+- Add pre-commit
+- Updated the readme files and contribution details
+- Update repository info and dependencies

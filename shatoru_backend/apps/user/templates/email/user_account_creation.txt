@@ -1,0 +1,12 @@
+Hi {{ name }},
+
+Your {{ customer_portal }} account has been successfully created by the {{ customer_portal }} Admin.
+
+Your login credentials are as stated below:
+Username: {{ username }}
+Password: {{ password }}
+
+Please reset your password on your first login.
+
+Regards,
+The {{ customer_portal }} Team

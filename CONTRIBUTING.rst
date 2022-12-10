@@ -1,28 +1,3 @@
-.. todo:: THIS IS SUPPOSED TO BE AN EXAMPLE. MODIFY IT ACCORDING TO YOUR NEEDS!
-
-   The document assumes you are using a source repository service that promotes a
-   contribution model similar to `GitHub's fork and pull request workflow`_.
-   While this is true for the majority of services (like GitHub, GitLab,
-   BitBucket), it might not be the case for private repositories (e.g., when
-   using Gerrit).
-
-   Also notice that the code examples might refer to GitHub URLs or the text
-   might use GitHub specific terminology (e.g., *Pull Request* instead of *Merge
-   Request*).
-
-   Please make sure to check the document having these assumptions in mind
-   and update things accordingly.
-
-.. todo:: Provide the correct links/replacements at the bottom of the document.
-
-.. todo:: You might want to have a look on `PyScaffold's contributor's guide`_,
-
-   especially if your project is open source. The text should be very similar to
-   this template, but there are a few extra contents that you might decide to
-   also include, like mentioning labels of your issue tracker or automated
-   releases.
-
-
 ============
 Contributing
 ============
@@ -71,26 +46,7 @@ by adding missing information and correcting mistakes.
 ``shatoru-backend`` documentation uses Sphinx_ as its main documentation compiler.
 This means that the docs are kept in the same repository as the project code, and
 that any documentation update is done in the same way was a code contribution.
-
-.. todo:: Don't forget to mention which markup language you are using.
-
-    e.g.,  reStructuredText_ or CommonMark_ with MyST_ extensions.
-
-.. todo:: If your project is hosted on GitHub, you can also mention the following tip:
-
-   .. tip::
-      Please notice that the `GitHub web interface`_ provides a quick way of
-      propose changes in ``shatoru-backend``'s files. While this mechanism can
-      be tricky for normal code contributions, it works perfectly fine for
-      contributing to the docs, and can be quite handy.
-
-      If you are interested in trying this method out, please navigate to
-      the ``docs`` folder in the source repository_, find which file you
-      would like to propose changes and click in the little pencil icon at the
-      top, to open `GitHub's code editor`_. Once you finish editing the file,
-      please write a message in the form at the bottom of the page describing
-      which changes have you made and what are the motivations behind them and
-      submit your proposal.
+This project is using reStructuredText_ as it's markup language.
 
 When working on documentation changes in your local machine, you can
 compile them using |tox|_::
@@ -105,12 +61,6 @@ and use Python's built-in web server for a preview in your web browser
 
 Code Contributions
 ==================
-
-.. todo:: Please include a reference or explanation about the internals of the project.
-
-   An architecture description, design principles or at least a summary of the
-   main concepts will make it easy for potential contributors to get started
-   quickly.
 
 Submit an issue
 ---------------
@@ -131,7 +81,7 @@ This can easily be done via either |virtualenv|_::
 
 or Miniconda_::
 
-    conda create -n shatoru-backend python=3 six virtualenv pytest pytest-cov
+    conda create -n shatoru-backend python=3.10
     conda activate shatoru-backend
 
 Clone the repository
@@ -142,7 +92,7 @@ Clone the repository
    page. This creates a copy of the code under your account on |the repository service|.
 #. Clone this copy to your local disk::
 
-    git clone git@github.com:YourLogin/shatoru-backend.git
+    git clone git@github.com:sp-95/shatoru-backend.git
     cd shatoru-backend
 
 #. You should run::
@@ -150,8 +100,6 @@ Clone the repository
     pip install -U pip setuptools -e .
 
    to be able to import the package under development in the Python REPL.
-
-   .. todo:: if you are not using pre-commit, please remove the following item:
 
 #. Install |pre-commit|_::
 
@@ -181,8 +129,6 @@ Implement your changes
     git commit
 
    to record your changes in git_.
-
-   .. todo:: if you are not using pre-commit, please remove the following item:
 
    Please make sure to see the validation messages from |pre-commit|_ and fix
    any eventual issues.
@@ -218,11 +164,9 @@ Submit your contribution
 #. Go to the web page of your fork and click |contribute button|
    to send your changes for review.
 
-   .. todo:: if you are using GitHub, you can uncomment the following paragraph
-
-      Find more detailed information in `creating a PR`_. You might also want to open
-      the PR as a draft first and mark it as ready for review after the feedbacks
-      from the continuous integration (CI) system or any required fixes.
+   Find more detailed information in `creating a PR`_. You might also want to open
+   the PR as a draft first and mark it as ready for review after the feedbacks
+   from the continuous integration (CI) system or any required fixes.
 
 
 Troubleshooting
@@ -236,7 +180,7 @@ package:
    are expecting. If you are trying to run CI scripts in a fork repository,
    make sure to push all the tags.
    You can also try to remove all the egg files or the complete egg folder, i.e.,
-   ``.eggs``, as well as the ``*.egg-info`` folders in the ``src`` folder or
+   ``.eggs``, as well as the ``*.egg-info`` folders in the ``shatoru_backend`` folder or
    potentially in the root of your project.
 
 #. Sometimes |tox|_ misses out when new dependencies are added, especially to
@@ -272,51 +216,11 @@ package:
    You can also setup breakpoints manually instead of using the ``--pdb`` option.
 
 
-Maintainer tasks
-================
-
-Releases
---------
-
-.. todo:: This section assumes you are using PyPI to publicly release your package.
-
-   If instead you are using a different/private package index, please update
-   the instructions accordingly.
-
-If you are part of the group of maintainers and have correct user permissions
-on PyPI_, the following steps can be used to release a new version for
-``shatoru-backend``:
-
-#. Make sure all unit tests are successful.
-#. Tag the current commit on the main branch with a release tag, e.g., ``v1.2.3``.
-#. Push the new tag to the upstream repository_, e.g., ``git push upstream v1.2.3``
-#. Clean up the ``dist`` and ``build`` folders with ``tox -e clean``
-   (or ``rm -rf dist build``)
-   to avoid confusion with old builds and Sphinx docs.
-#. Run ``tox -e build`` and check that the files in ``dist`` have
-   the correct version (no ``.dirty`` or git_ hash) according to the git_ tag.
-   Also check the sizes of the distributions, if they are too big (e.g., >
-   500KB), unwanted clutter may have been accidentally included.
-#. Run ``tox -e publish -- --repository pypi`` and check that everything was
-   uploaded to PyPI_ correctly.
-
-
-
-.. [#contrib1] Even though, these resources focus on open source projects and
-   communities, the general ideas behind collaborating with other developers
-   to collectively create software are general and can be applied to all sorts
-   of environments, including private companies and proprietary code bases.
-
-
-.. <-- strart -->
-.. todo:: Please review and change the following definitions:
-
 .. |the repository service| replace:: GitHub
 .. |contribute button| replace:: "Create pull request"
 
-.. _repository: https://github.com/<USERNAME>/shatoru-backend
-.. _issue tracker: https://github.com/<USERNAME>/shatoru-backend/issues
-.. <-- end -->
+.. _repository: https://github.com/sp-95/shatoru-backend
+.. _issue tracker: https://github.com/sp-95/shatoru-backend/issues
 
 
 .. |virtualenv| replace:: ``virtualenv``
@@ -325,29 +229,19 @@ on PyPI_, the following steps can be used to release a new version for
 
 
 .. _black: https://pypi.org/project/black/
-.. _CommonMark: https://commonmark.org/
 .. _contribution-guide.org: https://www.contribution-guide.org/
 .. _creating a PR: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 .. _descriptive commit message: https://chris.beams.io/posts/git-commit
 .. _docstrings: https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html
-.. _first-contributions tutorial: https://github.com/firstcontributions/first-contributions
 .. _flake8: https://flake8.pycqa.org/en/stable/
 .. _git: https://git-scm.com
-.. _GitHub's fork and pull request workflow: https://guides.github.com/activities/forking/
 .. _guide created by FreeCodeCamp: https://github.com/FreeCodeCamp/how-to-contribute-to-open-source
 .. _Miniconda: https://docs.conda.io/en/latest/miniconda.html
-.. _MyST: https://myst-parser.readthedocs.io/en/latest/syntax/syntax.html
 .. _other kinds of contributions: https://opensource.guide/how-to-contribute
 .. _pre-commit: https://pre-commit.com/
-.. _PyPI: https://pypi.org/
-.. _PyScaffold's contributor's guide: https://pyscaffold.org/en/stable/contributing.html
 .. _Pytest can drop you: https://docs.pytest.org/en/stable/how-to/failures.html#using-python-library-pdb-with-pytest
-.. _Python Software Foundation's Code of Conduct: https://www.python.org/psf/conduct/
 .. _reStructuredText: https://www.sphinx-doc.org/en/master/usage/restructuredtext/
 .. _Sphinx: https://www.sphinx-doc.org/en/master/
 .. _tox: https://tox.wiki/en/stable/
 .. _virtual environment: https://realpython.com/python-virtual-environments-a-primer/
 .. _virtualenv: https://virtualenv.pypa.io/en/stable/
-
-.. _GitHub web interface: https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files
-.. _GitHub's code editor: https://docs.github.com/en/repositories/working-with-files/managing-files/editing-files
