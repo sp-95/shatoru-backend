@@ -63,6 +63,7 @@ PROJECT_SRC = shatoru_backend
 .PHONY: init install install-dev server migrations apply-migrations app
 
 init: install-dev migrate  ## Initialize the database
+	python -m $(PROJECT_SRC).manage collectstatic
 	python -m $(PROJECT_SRC).manage create_groups
 	python -m $(PROJECT_SRC).manage create_default_admin
 
