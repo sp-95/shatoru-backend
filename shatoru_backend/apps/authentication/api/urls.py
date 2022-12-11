@@ -1,10 +1,10 @@
-from typing import List
+from typing import List, Union
 
 from django.urls import URLPattern, URLResolver, include, path
 
 from shatoru_backend.apps.authentication.api.views import LogInView, PasswordChangeView
 
-urlpatterns: List[URLPattern | URLResolver] = [
+urlpatterns: List[Union[URLPattern, URLResolver]] = [
     path("login/", LogInView.as_view(), name="login"),
     path(
         "password/change/<int:id>/",
