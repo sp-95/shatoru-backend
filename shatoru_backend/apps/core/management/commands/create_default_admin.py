@@ -1,3 +1,4 @@
+from decouple import config
 from django.contrib.auth.models import Group, User
 from django.core.management.base import BaseCommand
 from django.db import transaction
@@ -13,7 +14,7 @@ class Command(BaseCommand):
                 user.first_name = "Admin"
                 user.last_name = "User"
                 user.email = "shatoru.umd@gmail.com"
-                user.set_password("admin")
+                user.set_password(config("DEFAULT_ADMIN_PASSWORD", default="admin"))
 
                 admin_group = Group.objects.get(name="Admin")
                 user.groups.add(admin_group)
