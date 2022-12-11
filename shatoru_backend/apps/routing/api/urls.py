@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Union
 
 from django.urls import URLPattern, URLResolver
 from rest_framework.routers import DefaultRouter
@@ -9,7 +9,7 @@ router = DefaultRouter()
 router.register("", StopViewSet)
 
 
-urlpatterns: List[URLPattern | URLResolver] = [
+urlpatterns: List[Union[URLPattern, URLResolver]] = [
     # Other APIs here
 ]
 
