@@ -24,26 +24,34 @@ class ShuttleScheduleSerializer(ModelSerializer):
         stop_pool = cycle(stops.items())
 
         schedule = []
-        start_time = datetime.fromisoformat(data["start_time"].rstrip("Z"))
+        today = datetime.today()
+        start_time = datetime.strptime(data["start_time"], "%I:%M:%S %p").replace(
+            year=today.year, month=today.month, day=today.day
+        )
         current_time = start_time
-        end_time = datetime.fromisoformat(data["end_time"].rstrip("Z"))
+        end_time = datetime.strptime(data["end_time"], "%I:%M:%S %p").replace(
+            year=today.year, month=today.month, day=today.day
+        )
         while True:
-            next_stop, interval = next(stop_pool)
             previous_time = current_time
+            try:
+                next_stop, interval = next(stop_pool)
+            except StopIteration:
+                break
             current_time += timedelta(minutes=int(interval))
             if current_time.time() <= end_time.time():
                 schedule.append(
                     {
                         "stop_name": next_stop.name,
                         "stop_abbr": next_stop.abbr,
-                        "time": current_time.isoformat() + "Z",
+                        "time": current_time.isoformat(),
                     }
                 )
             else:
                 break
         data["schedule"] = schedule
-        data["start_time"] = start_time.isoformat() + "Z"
-        data["end_time"] = previous_time.isoformat() + "Z"
+        data["start_time"] = start_time.isoformat()
+        data["end_time"] = previous_time.isoformat()
 
         return data
 
