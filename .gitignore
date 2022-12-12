@@ -405,7 +405,8 @@ cython_debug/
 ### Project Specific ###
 
 # Migrations Files
-**/migrations
+**/migrations/*
+!**/migrations/__init__.py
 
 # Static Files
 static/
