@@ -62,6 +62,7 @@ class ShuttleSerializer(ModelSerializer):
     class Meta:
         model = models.Shuttle
         fields = "__all__"
+        read_only_fields = ["driver"]
 
     def to_representation(self, instance):
         data = super().to_representation(instance)

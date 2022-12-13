@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 from shatoru_backend.apps.core.models import AbstractBaseModel
@@ -7,6 +8,9 @@ from shatoru_backend.apps.core.models import AbstractBaseModel
 
 class Shuttle(AbstractBaseModel):
     name = models.CharField(max_length=255, unique=True)
+    driver = models.ForeignKey(
+        User, null=True, on_delete=models.SET_NULL, related_name="shuttles"
+    )
 
     def __str__(self) -> str:
         return self.name

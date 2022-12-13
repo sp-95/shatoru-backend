@@ -3,6 +3,7 @@ import secrets
 from django.conf import settings
 from django.contrib.auth.models import Group, User
 from django.core.mail import EmailMultiAlternatives
+from django.db import transaction
 from django.template.loader import render_to_string
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
@@ -11,8 +12,11 @@ from rest_framework.validators import UniqueValidator
 class DriverSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ("id", "username", "email", "first_name", "last_name")
+        fields = ("id", "username", "email", "first_name", "last_name", "shuttles")
         read_only_fields = ["id", "username"]
+        extra_kwargs = {
+            "shuttles": {"required": False},
+        }
 
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -22,12 +26,14 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ("username", "email", "first_name", "last_name")
+        fields = ("username", "email", "first_name", "last_name", "shuttles")
         extra_kwargs = {
             "first_name": {"required": True},
             "last_name": {"required": True},
+            "shuttles": {"required": False},
         }
 
+    @transaction.atomic
     def create(self, validated_data):
         user = User.objects.create(
             username=validated_data["username"],
@@ -42,6 +48,10 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.groups.add(driver_group)
 
         user.save()
+
+        for shuttle in validated_data["shuttles"]:
+            shuttle.driver = user
+            shuttle.save()
 
         # TODO: Move this to a different thread
         # create context for the email template
