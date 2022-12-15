@@ -1,8 +1,8 @@
 from rest_framework.viewsets import ModelViewSet
 
 from shatoru_backend.apps.core.permissions import IsAdminOrReadOnly
-from shatoru_backend.apps.shuttle_service import models
-from shatoru_backend.apps.shuttle_service.api import serializer
+from shatoru_backend.apps.shuttle_services import models
+from shatoru_backend.apps.shuttle_services.api import serializer
 
 
 class ShuttleViewSet(ModelViewSet):

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
 
-from shatoru_backend.apps.shuttle_service import models
+from shatoru_backend.apps.shuttle_services import models
 
 
 @admin.register(models.Shuttle)

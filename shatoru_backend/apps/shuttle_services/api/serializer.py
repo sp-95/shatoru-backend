@@ -4,7 +4,7 @@ from itertools import cycle
 from rest_framework.serializers import CharField, ModelSerializer
 
 from shatoru_backend.apps.routing.models import Stop
-from shatoru_backend.apps.shuttle_service import models
+from shatoru_backend.apps.shuttle_services import models
 
 
 class ShuttleScheduleSerializer(ModelSerializer):

@@ -3,7 +3,7 @@ from typing import List, Union
 from django.urls import URLPattern, URLResolver, path
 from rest_framework.routers import DefaultRouter
 
-from shatoru_backend.apps.shuttle_service.api import views
+from shatoru_backend.apps.shuttle_services.api import views
 
 router = DefaultRouter()
 router.register("", views.ShuttleViewSet)

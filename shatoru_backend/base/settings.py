@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     "shatoru_backend.apps.core",
     "shatoru_backend.apps.user",
     "shatoru_backend.apps.routing",
-    "shatoru_backend.apps.shuttle_service",
+    "shatoru_backend.apps.shuttle_services",
 ]
 
 MIDDLEWARE = [
