@@ -104,3 +104,27 @@ below to setup your backend and start the server
 
        make init
        make server
+
+
+`python -m venv .venv`
+code ~/.zshrc
+alias python="python3"
+pip install virtualenv
+source ./.venv/bin/activate
+pip install flake8
+pip install -U black
+.. to install dependencies specified in dev key of cfg file
+pip install ".[dev]"
+
+
+pre-commit
+pre-commit install
+pre-commit autoupdate
+
+pip install loguru
+
+.. to check if pytest package is installed in venv
+pip show pytest
+
+.. install all packages specified in test key of the cfg file | -e is used to install as editable
+pip install -e ".[test]"
