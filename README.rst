@@ -110,7 +110,10 @@ below to setup your backend and start the server
 code ~/.zshrc
 alias python="python3"
 pip install virtualenv
+
+.. to activate the virtual environment
 source ./.venv/bin/activate
+
 pip install flake8
 pip install -U black
 .. to install dependencies specified in dev key of cfg file
