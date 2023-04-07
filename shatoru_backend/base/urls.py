@@ -54,7 +54,9 @@ api_urlpatterns = [
         name="schema-swagger-ui",
     ),
     re_path(
-        r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"
+        r"^redoc/$",
+        schema_view.with_ui("redoc", cache_timeout=0),
+        name="schema-redoc",
     ),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
     path("auth/", include("shatoru_backend.apps.authentication.api.urls")),

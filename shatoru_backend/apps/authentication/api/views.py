@@ -28,7 +28,7 @@ class LogInView(ObtainAuthToken):
                     "last_name": user.last_name,
                     "email": user.email,
                     "role": "Admin" if user.is_staff else "Driver",
-                }
+                },
             )
         except ValidationError as e:
             e.detail = " ".join(e.detail.get("non_field_errors", []))

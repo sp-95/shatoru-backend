@@ -26,11 +26,15 @@ class ShuttleScheduleSerializer(ModelSerializer):
         schedule = []
         today = datetime.today()
         start_time = datetime.strptime(data["start_time"], "%I:%M:%S %p").replace(
-            year=today.year, month=today.month, day=today.day
+            year=today.year,
+            month=today.month,
+            day=today.day,
         )
         current_time = start_time
         end_time = datetime.strptime(data["end_time"], "%I:%M:%S %p").replace(
-            year=today.year, month=today.month, day=today.day
+            year=today.year,
+            month=today.month,
+            day=today.day,
         )
         while True:
             previous_time = current_time
@@ -45,7 +49,7 @@ class ShuttleScheduleSerializer(ModelSerializer):
                         "stop_name": next_stop.name,
                         "stop_abbr": next_stop.abbr,
                         "time": current_time.isoformat(),
-                    }
+                    },
                 )
             else:
                 break

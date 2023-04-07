@@ -10,7 +10,12 @@ router.register("", views.ShuttleViewSet)
 
 schedule_list = views.ShuttleScheduleViewSet.as_view({"get": "list", "post": "create"})
 schedule_detail = views.ShuttleScheduleViewSet.as_view(
-    {"get": "retrieve", "put": "update", "patch": "partial_update", "delete": "destroy"}
+    {
+        "get": "retrieve",
+        "put": "update",
+        "patch": "partial_update",
+        "delete": "destroy",
+    },
 )
 
 urlpatterns: List[Union[URLPattern, URLResolver]] = [
