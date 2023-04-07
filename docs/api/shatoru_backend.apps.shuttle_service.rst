@@ -1,6 +1,8 @@
 shatoru\_backend.apps.shuttle\_service namespace
 ================================================
 
+.. py:module:: shatoru_backend.apps.shuttle_service
+
 Subpackages
 -----------
 

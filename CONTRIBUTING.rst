@@ -10,11 +10,11 @@ appreciated.
 
 If you are new to using git_ or have never collaborated in a project previously,
 please have a look at `contribution-guide.org`_. Other resources are also
-listed in the excellent `guide created by FreeCodeCamp`_ [#contrib1]_.
+listed in the excellent `guide created by FreeCodeCamp`_.
 
 Please notice, all users and contributors are expected to be **open,
-considerate, reasonable, and respectful**. When in doubt, `Python Software
-Foundation's Code of Conduct`_ is a good reference in terms of behavior
+considerate, reasonable, and respectful**. When in doubt, `Python Community Code of
+Conduct`_ is a good reference in terms of behavior
 guidelines.
 
 
@@ -236,6 +236,7 @@ package:
 .. _flake8: https://flake8.pycqa.org/en/stable/
 .. _git: https://git-scm.com
 .. _guide created by FreeCodeCamp: https://github.com/FreeCodeCamp/how-to-contribute-to-open-source
+.. _Python Community Code of Conduct: https://www.python.org/psf/archive/codeofconduct/
 .. _Miniconda: https://docs.conda.io/en/latest/miniconda.html
 .. _other kinds of contributions: https://opensource.guide/how-to-contribute
 .. _pre-commit: https://pre-commit.com/

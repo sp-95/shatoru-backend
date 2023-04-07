@@ -1,9 +1,6 @@
+===============
 shatoru-backend
 ===============
-
-::
-
-   A mobile application to keep up-to-date with the Shuttle
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
     :target: https://github.com/psf/black
@@ -16,6 +13,10 @@ shatoru-backend
 .. image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
     :target: https://github.com/pre-commit/pre-commit
     :alt: pre-commit
+
+::
+
+   A mobile application to keep up-to-date with the Shuttle
 
 Prerequisites
 -------------
@@ -33,7 +34,7 @@ system.
 
 .. code:: bash
 
-     python --version
+   python --version
 
 If not then first `download <https://www.python.org/downloads/>`__ and
 install the appropriate version of python in your system.
@@ -66,7 +67,7 @@ Check the version of GNU Make of your system
 
 .. code:: bash
 
-     make --version
+   make --version
 
 Getting Started
 ---------------
@@ -102,32 +103,56 @@ below to setup your backend and start the server
 
 .. code:: bash
 
-       make init
-       make server
+   make init
+   make server
 
 
-`python -m venv .venv`
-code ~/.zshrc
-alias python="python3"
-pip install virtualenv
+Other useful commands
+~~~~~~~~~~~~~~~~~~~~~
+
+.. to set python3 as your default
+.. code:: bash
+
+   code ~/.zshrc
+   alias python="python3"
+
+.. to create a virtual environment
+.. code:: bash
+
+   pip install virtualenv
+   python -m venv .venv
 
 .. to activate the virtual environment
-source ./.venv/bin/activate
+.. code:: bash
 
-pip install flake8
-pip install -U black
-.. to install dependencies specified in dev key of cfg file
-pip install ".[dev]"
+   source ./.venv/bin/activate
 
+.. to install dependencies specified in dev key of cfg file | -e is used to install as editable
+.. code:: bash
 
-pre-commit
-pre-commit install
-pre-commit autoupdate
+   pip install -e ".[dev]"
 
-pip install loguru
+.. install all packages specified in test key of the cfg file
+.. code:: bash
+
+   pip install -e ".[test]"
+
+.. code:: bash
+
+   pip install flake8
+   pip install -U black
+
+.. code:: bash
+
+   pre-commit
+   pre-commit install
+   pre-commit autoupdate
+
+.. code:: bash
+
+   pip install loguru
 
 .. to check if pytest package is installed in venv
-pip show pytest
+.. code:: bash
 
-.. install all packages specified in test key of the cfg file | -e is used to install as editable
-pip install -e ".[test]"
+   pip show pytest
