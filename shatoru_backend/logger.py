@@ -1,17 +1,11 @@
 import logging
-import os
 import sys
-from distutils.util import strtobool
 from logging import LogRecord
-from pathlib import Path
 from typing import Any, Dict
 
 from loguru import logger
 
-# ====== Set directories ======
-APP_ROOT = Path(str(Path(__file__).parent.parent.absolute()))
-DEBUG_MODE = strtobool(os.environ.get("DEBUG", "False"))
-LOG_PATH = APP_ROOT / "logs"
+from shatoru_backend.config import DEBUG_MODE, LOG_PATH
 
 
 class InterceptHandler(logging.Handler):
