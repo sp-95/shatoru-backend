@@ -11,11 +11,13 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.8
+          python-version: 3.x
+
       - name: Install tox
         run: |
           echo "Installing tox"
           pip install tox
+
       - name: Perform static analysis and style checks
         run: |
           echo "Running lint"
@@ -30,11 +32,13 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.8
+          python-version: 3.x
+
       - name: Install tox
         run: |
           echo "Installing tox"
           pip install tox
+
       - name: Run pytest using the version of Python in `PATH`
         run: |
           echo "Running tests"

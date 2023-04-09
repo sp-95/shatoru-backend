@@ -19,10 +19,12 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python }}
+
       - name: Install tox
         run: |
           echo "Installing tox"
           pip install tox
+
       - name: Run pytest using the version of Python in `PATH`
         run: |
           echo "Running tests"

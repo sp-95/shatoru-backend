@@ -1,0 +1,44 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  test:
+    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Install tox
+        run: |
+          echo "Installing tox"
+          pip install tox
+
+      - name: Build the docs
+        run: |
+          echo "Building docs"
+          tox -e docs
+      - name: Run doctests
+        run: |
+          echo "Running doctests"
+          tox -e doctests
+      - name: Check for broken links in the documentation
+        run: |
+          echo "Checking links in the docs"
+          tox -e linkcheck
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4.4.1
+        with:
+          folder: docs/_build/html # The folder the action should deploy.
