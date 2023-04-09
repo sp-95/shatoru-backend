@@ -18,9 +18,9 @@ shatoru-backend
     :target: https://github.com/UMD-2022/shatoru-lifecycle/actions/workflows/test-all.yaml
     :alt: Tests
 
-.. .. image:: https://github.com/UMD-2022/shatoru-lifecycle/actions/workflows/documentation.yaml/badge.svg
-..     :target: https://UMD-2022.github.io/shatoru-lifecycle/
-..     :alt: Documentation
+.. image:: https://github.com/UMD-2022/shatoru-lifecycle/actions/workflows/documentation.yaml/badge.svg
+    :target: https://UMD-2022.github.io/shatoru-lifecycle/
+    :alt: Documentation
 
 ::
 
