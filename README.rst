@@ -2,6 +2,14 @@
 shatoru-backend
 ===============
 
+.. image:: https://github.com/UMD-2022/shatoru-lifecycle/actions/workflows/test-all.yaml/badge.svg
+    :target: https://github.com/UMD-2022/shatoru-lifecycle/actions/workflows/test-all.yaml
+    :alt: Tests
+
+.. image:: https://github.com/UMD-2022/shatoru-lifecycle/actions/workflows/documentation.yaml/badge.svg
+    :target: https://UMD-2022.github.io/shatoru-lifecycle/
+    :alt: Documentation
+
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
     :target: https://github.com/psf/black
     :alt: Code style: black
@@ -13,14 +21,6 @@ shatoru-backend
 .. image:: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white
     :target: https://github.com/pre-commit/pre-commit
     :alt: pre-commit
-
-.. image:: https://github.com/UMD-2022/shatoru-lifecycle/actions/workflows/test-all.yaml/badge.svg
-    :target: https://github.com/UMD-2022/shatoru-lifecycle/actions/workflows/test-all.yaml
-    :alt: Tests
-
-.. image:: https://github.com/UMD-2022/shatoru-lifecycle/actions/workflows/documentation.yaml/badge.svg
-    :target: https://UMD-2022.github.io/shatoru-lifecycle/
-    :alt: Documentation
 
 ::
 
