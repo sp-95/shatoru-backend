@@ -21,7 +21,7 @@ shatoru-backend
 Prerequisites
 -------------
 
--  Python ≥ 3.10.0
+-  Python ≥ 3.8.0
 -  Conda ≥ 4.12.0
 -  PostgreSQL ≥ 14
 -  GNU Make ≥ 3.75
