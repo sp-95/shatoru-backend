@@ -3,7 +3,7 @@ name: Pytest
 on: [push]
 
 jobs:
-  tox-setup:
+  lint:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,13 +16,6 @@ jobs:
         run: |
           echo "Installing tox"
           pip install tox
-
-  lint:
-    runs-on: ubuntu-latest
-    needs: tox-setup
-
-    steps:
-      - uses: actions/checkout@v3
       - name: Perform static analysis and style checks
         run: |
           echo "Running lint"
@@ -34,6 +27,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.7
+      - name: Install tox
+        run: |
+          echo "Installing tox"
+          pip install tox
       - name: Run pytest using the version of Python in `PATH`
         run: |
           echo "Running tests"
