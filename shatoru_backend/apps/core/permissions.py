@@ -7,7 +7,7 @@ class IsDriverOwner(BasePermission):
             request.user
             and request.user.is_authenticated
             and request.user.is_active
-            and request.user.groups.filter(name="Driver").exists()
+            and request.user.groups.filter(name="Driver").exists(),
         )
 
     def has_object_permission(self, request, view, obj):
@@ -17,5 +17,7 @@ class IsDriverOwner(BasePermission):
 class IsAdminOrReadOnly(BasePermission):
     def has_permission(self, request, view):
         return bool(
-            request.method in SAFE_METHODS or request.user and request.user.is_superuser
+            request.method in SAFE_METHODS
+            or request.user
+            and request.user.is_superuser,
         )

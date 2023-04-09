@@ -9,7 +9,10 @@ from shatoru_backend.apps.core.models import AbstractBaseModel
 class Shuttle(AbstractBaseModel):
     name = models.CharField(max_length=255, unique=True)
     driver = models.ForeignKey(
-        User, null=True, on_delete=models.SET_NULL, related_name="shuttles"
+        User,
+        null=True,
+        on_delete=models.SET_NULL,
+        related_name="shuttles",
     )
 
     def __str__(self) -> str:
@@ -18,7 +21,9 @@ class Shuttle(AbstractBaseModel):
 
 class ShuttleSchedule(AbstractBaseModel):
     shuttle = models.ForeignKey(
-        Shuttle, on_delete=models.CASCADE, related_name="schedules"
+        Shuttle,
+        on_delete=models.CASCADE,
+        related_name="schedules",
     )
 
     # class Day(models.TextChoices):

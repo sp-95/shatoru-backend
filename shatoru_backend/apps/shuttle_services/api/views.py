@@ -19,6 +19,6 @@ class ShuttleScheduleViewSet(ModelViewSet):
 
     def perform_create(self, serializer):
         shuttle, _ = models.Shuttle.objects.get_or_create(
-            name=self.request.data["shuttle"]
+            name=self.request.data["shuttle"],
         )
         serializer.save(shuttle=shuttle)

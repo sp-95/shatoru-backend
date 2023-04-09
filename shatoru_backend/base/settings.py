@@ -97,7 +97,7 @@ DATABASES = {
         "USER": config("POSTGRES_USER"),
         "PASSWORD": config("POSTGRES_PASSWORD"),
         "NAME": config("POSTGRES_DB"),
-    }
+    },
 }
 
 
@@ -159,7 +159,7 @@ REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.TokenAuthentication",
-    ]
+    ],
 }
 
 # Email Notification

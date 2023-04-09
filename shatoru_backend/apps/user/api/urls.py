@@ -14,6 +14,8 @@ urlpatterns: List[Union[URLPattern, URLResolver]] = [
     path("driver/list/", DriverListAPIView.as_view(), name="list_drivers"),
     path("driver/<int:id>/", DriverAPIView.as_view(), name="get_or_update_driver"),
     path(
-        "driver/<int:id>/delete/", DeleteDriverAPIView.as_view(), name="delete_driver"
+        "driver/<int:id>/delete/",
+        DeleteDriverAPIView.as_view(),
+        name="delete_driver",
     ),
 ]

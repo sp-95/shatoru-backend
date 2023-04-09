@@ -6,7 +6,9 @@ from rest_framework import serializers
 class PasswordChangeSerializer(serializers.ModelSerializer):
     old_password = serializers.CharField(write_only=True, required=True)
     password = serializers.CharField(
-        write_only=True, required=True, validators=[validate_password]
+        write_only=True,
+        required=True,
+        validators=[validate_password],
     )
     password2 = serializers.CharField(write_only=True, required=True)
 
@@ -17,7 +19,7 @@ class PasswordChangeSerializer(serializers.ModelSerializer):
     def validate(self, attrs):
         if attrs["password"] != attrs["password2"]:
             raise serializers.ValidationError(
-                {"password": "Password fields don't match"}
+                {"password": "Password fields don't match"},
             )
 
         return attrs
@@ -26,7 +28,7 @@ class PasswordChangeSerializer(serializers.ModelSerializer):
         user = self.context["request"].user
         if not user.check_password(value):
             raise serializers.ValidationError(
-                {"old_password": "Old password is not correct"}
+                {"old_password": "Old password is not correct"},
             )
         return value
 

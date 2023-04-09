@@ -21,7 +21,8 @@ class DriverSerializer(serializers.ModelSerializer):
 
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
-        required=True, validators=[UniqueValidator(queryset=User.objects.all())]
+        required=True,
+        validators=[UniqueValidator(queryset=User.objects.all())],
     )
 
     class Meta:
@@ -64,10 +65,12 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         # render email text
         email_html_message = render_to_string(
-            "email/user_account_creation.html", context
+            "email/user_account_creation.html",
+            context,
         )
         email_plaintext_message = render_to_string(
-            "email/user_account_creation.txt", context
+            "email/user_account_creation.txt",
+            context,
         )
 
         # send an e-mail to the user
