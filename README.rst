@@ -14,6 +14,10 @@ shatoru-backend
     :target: https://github.com/pre-commit/pre-commit
     :alt: pre-commit
 
+.. image:: https://github.com/shrestharosy/shatoru-lifecycle/actions/workflows/test-all.yaml/badge.svg
+    :target: https://github.com/shrestharosy/shatoru-lifecycle/actions/workflows/test-all.yaml
+    :alt: Tests
+
 ::
 
    A mobile application to keep up-to-date with the Shuttle

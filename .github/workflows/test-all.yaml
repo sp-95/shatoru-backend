@@ -1,4 +1,4 @@
-name: Pytest on all versions
+name: Tests
 
 on:
   pull_request:
