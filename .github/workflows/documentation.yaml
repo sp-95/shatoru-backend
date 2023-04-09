@@ -60,6 +60,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.x
+
+      - name: Install tox
+        run: |
+          echo "Installing tox"
+          pip install tox
+
+      - name: Build the docs
+        run: |
+          echo "Building docs"
+          tox -e docs
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4.4.1
