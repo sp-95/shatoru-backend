@@ -76,10 +76,6 @@ class LogConfig:
     Usage:
         To use this class, simply call the `setup` method, which will set up the logging
         configuration for the application.
-
-    Example:
-        >>> log_config = LogConfig()
-        >>> log_config.setup()
     """
 
     @staticmethod
