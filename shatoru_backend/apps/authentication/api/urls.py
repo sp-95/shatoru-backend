@@ -1,3 +1,17 @@
+"""
+URL Configuration for the Authentication API.
+
+This module defines the URL configuration for the Authentication API, which provides
+endpoints for user authentication and password management.
+
+URL patterns:
+- login/: Endpoint for user login.
+- password/change/:id/: Endpoint for changing the password of the user with the
+    specified ID.
+- password/reset/: Endpoints for resetting user passwords using Django Rest Password
+    Reset package.
+"""
+
 from typing import List, Union
 
 from django.urls import URLPattern, URLResolver, include, path
