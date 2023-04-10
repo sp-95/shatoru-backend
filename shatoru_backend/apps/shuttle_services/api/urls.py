@@ -1,3 +1,16 @@
+"""
+URL patterns for shuttle_services API.
+
+List of URL patterns:
+    - `/`: The root endpoint of the API. Supports HTTP methods `GET`, `POST`, `PUT`,
+        `PATCH`, and `DELETE`.
+    - `/schedules/`: Endpoint for listing all shuttle schedules. Supports HTTP methods
+        `GET` and `POST`.
+    - `/schedules/<uuid:id>/`: Endpoint for retrieving, updating, or deleting a
+        specific shuttle schedule identified by `<uuid:id>`. Supports HTTP methods
+        `GET`, `PUT`, `PATCH`, and `DELETE`.
+"""
+
 from typing import List, Union
 
 from django.urls import URLPattern, URLResolver, path
