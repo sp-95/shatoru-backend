@@ -3,7 +3,7 @@ import json
 from locust import HttpUser, between, task
 
 
-class Shuttle(HttpUser):
+class ShuttleDemo(HttpUser):
     wait_time = between(1, 5)
 
     def on_start(self):
@@ -19,9 +19,16 @@ class Shuttle(HttpUser):
             raise Exception("Failed to authenticate with the API")
         self.access_token = json.loads(response.content)["token"]
 
-    @task(1)
+    @task
     def list_schedules(self):
         self.client.get(
             "/shuttles/schedules/",
+            headers={"Authorization": f"Token {self.access_token}"},
+        )
+
+    @task(1)
+    def list_shuttles(self):
+        self.client.get(
+            "/shuttles/",
             headers={"Authorization": f"Token {self.access_token}"},
         )
