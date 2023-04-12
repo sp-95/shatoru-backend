@@ -19,7 +19,7 @@ from rest_framework.routers import DefaultRouter
 from shatoru_backend.apps.shuttle_services.api import views
 
 router = DefaultRouter()
-router.register("", views.ShuttleViewSet)
+router.register("", views.ShuttleViewSet, basename="shuttle")
 
 schedule_list = views.ShuttleScheduleViewSet.as_view({"get": "list", "post": "create"})
 schedule_detail = views.ShuttleScheduleViewSet.as_view(
